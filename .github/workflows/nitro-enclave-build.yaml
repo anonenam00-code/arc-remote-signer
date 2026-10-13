@@ -51,7 +51,7 @@ permissions:
 
 jobs:
   build:
-    runs-on: ${{ inputs.runner }}
+    runs-on: ubuntu-latest
     timeout-minutes: 30
     outputs:
       image_artifact_name: ${{ steps.eif.outputs.image_artifact_name }}
