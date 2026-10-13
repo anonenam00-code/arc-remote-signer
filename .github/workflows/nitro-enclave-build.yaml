@@ -82,10 +82,8 @@ jobs:
           toolchain: stable
 
       - name: Build nitro-cli from source
-        if: steps.cli-cache.outputs.cache-hit != 'true'
         run: |
-          echo "Bypassing nitro-cli download for testing" 
-
+          echo "Bypassing nitro-cli download for testing"
       - name: Install nitro-cli
         run: sudo cp -a /tmp/nitro-install/. /
 
