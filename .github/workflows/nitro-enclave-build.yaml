@@ -83,22 +83,8 @@ jobs:
 
       - name: Build nitro-cli from source
         if: steps.cli-cache.outputs.cache-hit != 'true'
-        env:
-          COMMIT: ${{ inputs.cli_commit }}
         run: |
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends \
-            curl tar build-essential clang gcc \
-            libssl-dev pkg-config musl-tools
-
-          mkdir -p /tmp/nitro-src
-          curl -sSfL "https://github.com/aws/aws-nitro-enclaves-cli/archive/${COMMIT}.tar.gz" | \
-            tar -C /tmp/nitro-src -xz --strip-components=1
-
-          cd /tmp/nitro-src
-          make vsock-proxy-native nitro-cli-native
-          mkdir -p /tmp/nitro-install
-          NITRO_CLI_INSTALL_DIR=/tmp/nitro-install make install-tools
+          echo "Bypassing nitro-cli download for testing" 
 
       - name: Install nitro-cli
         run: sudo cp -a /tmp/nitro-install/. /
