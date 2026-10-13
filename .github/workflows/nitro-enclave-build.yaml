@@ -1,6 +1,12 @@
 name: Nitro Enclave Build
 
 on:
+  workflow_dispatch:
+    inputs:
+      artifact_name:
+        description: "Artifact name"
+        type: string
+        default: "nitro-enclave-image"
   workflow_call:
     inputs:
       runner:
